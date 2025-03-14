@@ -1,15 +1,12 @@
-import { Text, View } from "react-native";
-
-export default function Index() {
+import React from "react";
+import RootStack from "../navigation/RootStack";
+import { Provider } from "react-redux";
+import store from "../redux/Store";
+import UsersScreen from "../screens/UsersScreen";
+export default function index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <Provider store={store}>
+      <RootStack />
+    </Provider>
   );
 }

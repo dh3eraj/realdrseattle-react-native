@@ -1,12 +1,12 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationIndependentTree } from '@react-navigation/native';
 
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import UsersScreen from '../screens/UsersScreen';
 
 export type RootStackParamList = {
   Home: undefined;
+  Users: undefined;
   Profile: { userId: string };  
 };
 
@@ -14,11 +14,12 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function RootStack() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+    <NavigationIndependentTree>
+          <NavigationContainer>
+      <Stack.Navigator initialRouteName="Users">
+        <Stack.Screen name="Users" component={UsersScreen} options={{headerShown :false}}/>
       </Stack.Navigator>
     </NavigationContainer>
+</NavigationIndependentTree>
   );
 }
